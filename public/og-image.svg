@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <rect width="1200" height="630" fill="#f9f4ec"/>
+  <g fill="none" stroke="#e8b3bd" stroke-width="3" stroke-linecap="round" opacity="0.9">
+    <path d="M600 470V330"/>
+    <path d="M600 330c0-70 46-116 115-116 0 70-46 116-115 116Z"/>
+    <path d="M600 330c0-70-46-116-115-116 0 70 46 116 115 116Z"/>
+    <path d="M600 400c0-58 42-97 101-97 0 58-42 97-101 97Z"/>
+    <path d="M600 400c0-58-42-97-101-97 0 58 42 97 101 97Z"/>
+  </g>
+  <text x="600" y="540" text-anchor="middle" font-family="Georgia, serif" font-size="40" fill="#1c1a17" letter-spacing="6">PÉTALOS DE MÓNICA</text>
+  <text x="600" y="580" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" fill="#6b645a" letter-spacing="4">FLORES QUE DURAN</text>
+</svg>

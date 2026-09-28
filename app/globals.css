@@ -1,0 +1,201 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------
+   Paleta Pétalos de Mónica
+   Blanco cálido · crema · negro suave · rosa floral · verde sutil
+------------------------------------------------------------------- */
+@theme {
+  --color-cream-50: #fdfbf7;
+  --color-cream-100: #f9f4ec;
+  --color-cream-200: #f2e9db;
+  --color-cream-300: #e7d9c6;
+
+  --color-ink-900: #1c1a17;
+  --color-ink-700: #3a362f;
+  --color-ink-500: #6b645a;
+  --color-ink-400: #8c8478;
+
+  --color-petal-50: #fdf5f6;
+  --color-petal-100: #f9e7ea;
+  --color-petal-300: #e8b3bd;
+  --color-petal-500: #c9808f;
+  --color-petal-700: #9c5464;
+
+  --color-sage-100: #eef1ea;
+  --color-sage-300: #c3cebe;
+  --color-sage-600: #6f7f6a;
+
+  --font-display: var(--font-serif), ui-serif, Georgia, serif;
+  --font-sans: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+
+  --radius-card: 1.25rem;
+
+  --shadow-soft: 0 1px 2px rgb(28 26 23 / 0.04),
+    0 8px 24px -12px rgb(28 26 23 / 0.12);
+  --shadow-lift: 0 2px 4px rgb(28 26 23 / 0.05),
+    0 18px 40px -18px rgb(28 26 23 / 0.22);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-cream-50);
+    color: var(--color-ink-900);
+    font-family: var(--font-sans);
+    /* Evita scroll horizontal en móvil */
+    overflow-x: hidden;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    letter-spacing: -0.015em;
+  }
+
+  /* Foco visible y consistente en toda la app */
+  :focus-visible {
+    outline: 2px solid var(--color-petal-700);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  ::selection {
+    background-color: var(--color-petal-300);
+    color: var(--color-ink-900);
+  }
+}
+
+@layer components {
+  /* Rejilla de contenedor consistente */
+  .container-page {
+    width: 100%;
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+    max-width: 80rem;
+  }
+  @media (min-width: 768px) {
+    .container-page {
+      padding-inline: 2.5rem;
+    }
+  }
+
+  /* Botón base */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: 9999px;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.875rem 1.75rem;
+    min-height: 2.75rem;
+    transition:
+      background-color 0.25s ease,
+      color 0.25s ease,
+      border-color 0.25s ease,
+      transform 0.25s ease,
+      opacity 0.25s ease;
+    cursor: pointer;
+  }
+  .btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.45;
+  }
+
+  .btn-primary {
+    background-color: var(--color-ink-900);
+    color: var(--color-cream-50);
+  }
+  .btn-primary:hover:not(:disabled) {
+    background-color: var(--color-petal-700);
+  }
+
+  .btn-secondary {
+    border: 1px solid var(--color-cream-300);
+    color: var(--color-ink-900);
+    background-color: transparent;
+  }
+  .btn-secondary:hover:not(:disabled) {
+    border-color: var(--color-ink-900);
+    background-color: var(--color-cream-100);
+  }
+
+  .btn-light {
+    background-color: var(--color-cream-50);
+    color: var(--color-ink-900);
+  }
+  .btn-light:hover:not(:disabled) {
+    background-color: var(--color-petal-100);
+  }
+
+  .btn-ghost-light {
+    border: 1px solid rgb(253 251 247 / 0.5);
+    color: var(--color-cream-50);
+  }
+  .btn-ghost-light:hover:not(:disabled) {
+    background-color: rgb(253 251 247 / 0.12);
+  }
+
+  /* Etiqueta pequeña sobre títulos */
+  .eyebrow {
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--color-ink-400);
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .hide-scrollbar {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Aparición suave al hacer scroll */
+  .reveal {
+    opacity: 0;
+    transform: translateY(16px);
+    transition:
+      opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    .reveal {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+    }
+  }
+}
