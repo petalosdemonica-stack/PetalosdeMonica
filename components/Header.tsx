@@ -54,15 +54,17 @@ export function Header() {
       <header
         className={[
           "fixed inset-x-0 top-0 z-50 transition-all duration-300",
+          // El hero es claro (crema), así que el header también usa tinta
+          // oscura sobre él. Al hacer scroll aparece el fondo translúcido.
           overlay
-            ? "bg-transparent text-cream-50"
+            ? "bg-transparent text-ink-900"
             : "border-b border-cream-200/80 bg-cream-50/85 text-ink-900 backdrop-blur-md",
         ].join(" ")}
       >
         <div className="container-page flex h-16 items-center justify-between gap-4 md:h-20">
           <Link
             href="/"
-            className="font-display text-base leading-tight tracking-[0.18em] uppercase transition-opacity hover:opacity-70 md:text-lg"
+            className="font-display text-sm leading-tight tracking-[0.25em] uppercase transition-opacity hover:opacity-70 md:text-base"
           >
             Pétalos
             <span className="hidden sm:inline"> de Mónica</span>
@@ -81,7 +83,7 @@ export function Header() {
                       href={link.href}
                       aria-current={active ? "page" : undefined}
                       className={[
-                        "text-[0.8125rem] tracking-[0.1em] uppercase transition-opacity hover:opacity-60",
+                        "text-[0.6875rem] tracking-[0.2em] uppercase transition-opacity hover:opacity-60",
                         active ? "opacity-100" : "opacity-70",
                       ].join(" ")}
                     >

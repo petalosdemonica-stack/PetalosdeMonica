@@ -130,19 +130,22 @@
   }
 
   .btn-light {
-    background-color: var(--color-cream-50);
+    background-color: #ffffff;
     color: var(--color-ink-900);
+    border: 1px solid var(--color-cream-300);
   }
   .btn-light:hover:not(:disabled) {
-    background-color: var(--color-petal-100);
+    background-color: var(--color-cream-100);
+    border-color: var(--color-ink-900);
   }
 
   .btn-ghost-light {
-    border: 1px solid rgb(253 251 247 / 0.5);
-    color: var(--color-cream-50);
+    border: 1px solid var(--color-cream-300);
+    color: var(--color-ink-900);
   }
   .btn-ghost-light:hover:not(:disabled) {
-    background-color: rgb(253 251 247 / 0.12);
+    border-color: var(--color-ink-900);
+    background-color: var(--color-cream-100);
   }
 
   /* Etiqueta pequeña sobre títulos */

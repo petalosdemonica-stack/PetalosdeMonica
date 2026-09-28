@@ -5,7 +5,11 @@ import { Reveal } from "./Reveal";
 /** Sección de marca: refuerza el concepto de trabajo artesanal. */
 export function BrandStory() {
   return (
-    <section className="relative isolate overflow-hidden bg-cream-100 py-20 md:py-28">
+    // `id="historia"`: destino real del CTA "CONOCER MÁS" del Hero.
+    <section
+      id="historia"
+      className="relative isolate scroll-mt-24 overflow-hidden bg-cream-100 py-20 md:py-28"
+    >
       <div className="container-page grid items-center gap-12 md:grid-cols-2 md:gap-16">
         <Reveal>
           <p className="eyebrow">Nuestra esencia</p>
