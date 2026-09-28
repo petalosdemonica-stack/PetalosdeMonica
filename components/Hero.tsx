@@ -18,14 +18,12 @@ export const heroContent = {
   /**
    * Video de fondo (movimiento suave).
    *
-   * Para activarlo:
-   *   1. Coloca el archivo en `public/hero/hero-movimiento.mp4`
-   *   2. Cambia `videoSrc` por "/hero/hero-movimiento.mp4"
+   * Archivo: `public/hero/hero-movimiento.mp4`
    *
-   * Mientras sea `null` se muestra la imagen de fondo, de modo que nunca queda
-   * un bloque vacío si el archivo todavía no existe.
+   * Para desactivarlo temporalmente, vuelve a `null`:
+   * el Hero mostrará la imagen de fondo y no quedará nunca un bloque vacío.
    */
-  videoSrc: null as string | null,
+  videoSrc: "/hero/hero-movimiento.mp4" as string | null,
 
   /** Imagen de respaldo. Sigue siendo un placeholder de Unsplash (sección 16). */
   image: placeholderImages.hero,
@@ -39,30 +37,36 @@ export function Hero() {
       id="inicio"
       className="relative flex min-h-[100svh] w-full flex-col overflow-hidden bg-cream-50"
     >
-      {/* Fondo: video con movimiento suave + respaldo en imagen */}
-      {heroContent.videoSrc ? (
+      {/*
+        Capa base: la imagen se renderiza SIEMPRE, también con el video activo.
+        Si el navegador no puede reproducir el MP4 (codec no soportado, error de
+        red, ahorro de datos) queda la imagen de fondo visible en lugar de un
+        rectángulo negro.
+      */}
+      <Image
+        src={heroContent.image}
+        alt={heroContent.imageAlt}
+        fill
+        priority
+        sizes="100vw"
+        className="object-cover object-center"
+      />
+
+      {/* Capa de video: movimiento suave por encima de la imagen */}
+      {heroContent.videoSrc && (
         <video
           autoPlay
           loop
           muted
           playsInline
-          // Evita que el navegador descargue el video cuando está en Data Saver
-          preload="metadata"
-          poster={heroContent.image}
+          // "auto" deja que el navegador decida: con ahorro de datos prioriza
+          // la imagen base en vez de descargar el video completo.
+          preload="auto"
           aria-hidden="true"
           className="absolute inset-0 h-full w-full object-cover"
         >
           <source src={heroContent.videoSrc} type="video/mp4" />
         </video>
-      ) : (
-        <Image
-          src={heroContent.image}
-          alt={heroContent.imageAlt}
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover object-center"
-        />
       )}
 
       {/*
